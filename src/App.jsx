@@ -1,17 +1,24 @@
+// App.jsx
 import "./App.css";
 import CounterApp from "./Components/CounterApp";
 import CourseCard from "./Components/CourseCard";
-// import InfoCard from "./Components/CourseCard";
-import Navbar from "./Components/NavbarComponents";
 import ToDoList from "./Components/ToDoList";
+import Navbar from "./Components/NavbarComponents";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import Courses from "./Pages/Courses";
+import Login from "./Pages/Login";
 
 function App() {
   const courses = [
     {
       id: 1,
       title: "Complete MERN Stack Bootcamp",
-      description:
-        "Learn MongoDB, Express, React & Node with real-world projects.",
+      description: "Learn MongoDB, Express, React & Node with real-world projects.",
       rating: 4.8,
       reviews: 2340,
       students: 12500,
@@ -24,8 +31,7 @@ function App() {
     {
       id: 2,
       title: "React JS From Beginner to Advanced",
-      description:
-        "Master React with hooks, routing, context API and projects.",
+      description: "Master React with hooks, routing, context API and projects.",
       rating: 4.7,
       reviews: 1890,
       students: 9800,
@@ -64,20 +70,29 @@ function App() {
   ];
 
   return (
-    <>
+    <Router>
+      {/* Navbar always visible */}
       <Navbar />
-      <div>
-        <h3>Course Managment System</h3>
-      </div>
-      {/* <InfoCard name="mern stack" duration="2" />
-       <InfoCard name="Java Script" duration="1" /> */}
-      <div className="flex gap-2">
-        <CourseCard props={courses} />
+
+      <div style={{ padding: "20px" }}>
+        <h3>Course Management System</h3>
       </div>
 
-      <CounterApp/>
-      <ToDoList/>
-    </>
+      {/* Routing */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/courses" element={<Courses courses={courses} />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+
+      {/* Optional components: commented out so they don't render */}
+      {/*
+      <CounterApp />
+      <ToDoList />
+      */}
+    </Router>
   );
 }
 

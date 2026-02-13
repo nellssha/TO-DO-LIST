@@ -42,7 +42,7 @@ export default function TodoApp() { // defines a functional component named Todo
 
                 {/* Input Section */}
                 <div className="bg-gray-800/50 backdrop-blur-xl rounded-2xl p-8 mb-8 border border-gray-700/50"> // sets up the input section with a semi-transparent background, blur effect, padding, margin, and border
-                    <div className="flex gap-4"> // creates a flex container with a gap between the input field and the button
+                    <div className="flex gap-4"> 
                         <input
                             type="text" // defines an input field for entering new todo items
                             value={inputValue}
